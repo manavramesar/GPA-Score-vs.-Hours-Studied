@@ -12,13 +12,13 @@ ALTER TABLE gpa.gpa_study_hours MODIFY COLUMN gpa DECIMAL(10, 1);
 
 -- Query
 
--- Average, max & min
+-- Average, max & min --
 
 SELECT
     'GPA' AS "",
     ROUND(MIN(gpa),1) AS Minimum,
     ROUND(MAX(gpa),1) AS Maximum,
-    ROUND(AVG(gpa),1)  AS Avgerage
+    ROUND(AVG(gpa),1)  AS Average
 FROM gpa_study_hours
 UNION ALL
 SELECT
@@ -74,7 +74,7 @@ FROM gpa_study_hours;
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(study_hours ORDER BY study_hours), ',', FLOOR(0.75 * COUNT(*) + 1)), ',', -1) AS upper_quartile
 FROM gpa_study_hours;
 
--- Correlation Coeffecient
+-- Correlation Coefficient --
 
 SELECT
     ROUND((SUM(gpa * study_hours) - COUNT(*) * AVG(gpa) * AVG(study_hours)) /
@@ -82,7 +82,7 @@ SELECT
     AS correlation_coefficient
 FROM gpa_study_hours;
 
--- Number of students above the average
+-- Number of students above the average --
 
 SELECT COUNT(*) as no_of_students
 FROM gpa_study_hours
