@@ -16,18 +16,6 @@ SELECT
    ROUND(AVG(study_hours),1)
 FROM gpa_study_hours;
 
--- lower quartile GPA score --
-
-CREATE VIEW lq_gpa AS(
-SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(gpa ORDER BY gpa), ',', FLOOR(0.25 * COUNT(*) + 1)), ',', -1) AS lower_quartile
-FROM gpa_study_hours);
-
--- upper quartile GPA score --
-
-CREATE VIEW uq_gpa AS(
-SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(gpa ORDER BY gpa), ',', FLOOR(0.75 * COUNT(*) + 1)), ',', -1) AS lower_quartile
-FROM gpa_study_hours);
-
 -- GPA Scores and the average amount of hours a student has studied --
 
 CREATE VIEW avg_hours_studied AS(
