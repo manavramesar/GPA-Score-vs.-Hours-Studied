@@ -57,7 +57,7 @@ WHERE row_num IN (FLOOR((total_rows + 1) / 2), CEIL((total_rows + 1) / 2));
 -- lower quartile GPA score --
 
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(gpa ORDER BY gpa), ',', FLOOR(0.25 * COUNT(*) + 1)), ',', -1) AS lower_quartile
-FROM gpa_study_hours;
+FROM gpa_study_hours; // scores sorted in asc, concat'ed, percentile found, percentile extracted 
 
 -- upper quartile GPA score --
 
