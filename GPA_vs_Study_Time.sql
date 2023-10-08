@@ -39,7 +39,7 @@ b AS (
     FROM a)
 SELECT ROUND(AVG(gpa),1) AS median_gpa
 FROM b
-WHERE row_num IN (FLOOR((total_rows + 1) / 2), CEIL((total_rows + 1) / 2));
+WHERE row_num IN (FLOOR((total_rows + 1) / 2), CEIL((total_rows + 1) / 2)); // row_num is equal to either floor or ceiling num
 
 -- Median Hours studied -- 
 
